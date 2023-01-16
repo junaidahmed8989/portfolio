@@ -1,0 +1,113 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 50px 0px;
+  padding: 0px 50px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 4px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+tr:nth-child(odd) {
+  background-color: #f2f2f2;
+}
+
+tr:nth-child(even) {
+  background-color: #fff;
+}
+
+.tableContainer {
+  width: 100%;
+  position: relative;
+  display: flex;
+  overflow-x: scroll;
+  min-height: 60vh;
+}
+.container table {
+  min-width: 100%;
+}
+
+.btns {
+  display: flex;
+  width: 15%;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.btns button {
+  padding: 5px;
+  cursor: pointer;
+}
+
+.chart {
+  width: 50vw;
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#hiddenInput {
+  transform: translateX(5000px);
+}
+
+.tableCon {
+  position: relative;
+  width: 100%;
+  display: flex;
+  min-height: 60vh;
+}
+.show {
+  display: flex !important;
+}
+.showSelect {
+  display: inline !important;
+}
+.hide {
+  display: none !important;
+}
+
+#filter,
+#yearFilter {
+  padding: 5px;
+  margin: 10px;
+}
+
+.filters {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+}
+
+@media screen and (max-width: 1080px) {
+  .chart {
+    width: 80vw;
+  }
+}
+@media screen and (max-width: 720) {
+  .chart {
+    width: 100vw;
+  }
+}

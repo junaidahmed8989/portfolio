@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>Currency Converter</title>
+
+
+	<link rel="stylesheet" href="res.css">
+  <link rel="icon" href="img/logoo.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body>
+  <div class="navv" >
+    <div class="topnav" id="myTopnav">
+      <a href="index.html" class="h-page"> <img src="img/ja.png" alt=""> </a>
+      <a href="index.html" >Home</a>
+      <a href="resume.html" >Resume</a>
+      <div class="dropdown">
+        <button class="dropbtn">History
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+          <a href="academic.html" >Academic</a>
+          <a href="Professional.html" >Professional</a>
+        </div>
+      </div> 
+      <div class="dropdown">
+        <button class="dropbtn">My Skills
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+          <a href="currency.html" class="active">Currency Converter</a>
+          <a href="forcaster.html">Forecaster</a>
+        </div>
+      </div> 
+      <a href="contact.html" >Contact Us</a>
+
+      <!-- <div class="dropdown">
+        <button class="dropbtn">Dropdown 
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+          <a href="#">Link 1</a>
+          <a href="#">Link 2</a>
+          <a href="#">Link 3</a>
+        </div>
+      </div>  -->
+      <a href="about.html" >About Us</a>
+      <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
+    </div>
+    
+  
+    
+  </div>
+  <div class="banner-currency">
+    <h2 class="ban-txt " > Currency Exchange Calculator  </h2>
+  </div>
+	<div class="cal-sec">
+    <div class="cal-inner">
+      <h1 class="text-center mb-20p"> Currency Exchange </h1>
+      <form class="frConverter">
+        <div style="margin-bottom:10px">
+          <span class=" sc-s">Source Currency </span>
+          <select class="tag-cur" name="base_currency" id="source_currency"></select>
+          <input type="hidden"   name="default_base" value="usd"/>
+          <input type="number" id="source_currency_amount" name="base_value" size="5" min="0" value="1" onkeyup="myFunctionTest()"/>
+        </div>
+    
+        <div>
+          <span>Destination Currency </span>
+          <select class="tag-cur" name="target_currency" id="destination_currency" onChange="frExCalc();"></select>
+          <input type="hidden"   name="default_target" value="eur"/>
+          <input type="number" id="destination_currency_amount"   name="target_value" size="5" value=""/>
+        </div>
+        <br/>
+        <!-- <a class="frLink" href="//www.floatrates.com/">Exchange Rates</a> -->
+        </form>
+        <div class="mt-20p" >
+          <a class="exc" id="excc">Exchange  </a>
+          <a class="reset" id="reset">Reset  </a>
+        </div>
+       
+
+        <div class="out-cal" id = "out">
+          <h5>
+            Source Curreny : 
+            <span id="source-cur">
+    
+            </span>
+          </h5>
+          <h5>
+            Destination Curreny : 
+            <span id="destination-cur">
+    
+            </span>
+          </h5>
+          <h5>
+             Curreny Exchange Rate : 
+            <span id="destination-name">
+    
+            </span>
+            <span id="per-rate">
+    
+            </span>
+          </h5>
+          <h5>
+            Transcaction Time : 
+           <span id="time">
+    
+           </span>
+           <span id="">
+    
+           </span>
+         </h5>
+          <h5>
+            Amount of transcaction  : 
+           <span id="in-sor">
+    
+           </span>
+           <span id="final-con">
+
+           </span>
+         </h5>
+        </div>
+    </div>
+
+  </div>
+  <div class="footer">
+    <h3 class="mb-10p">Bscsf1425@gmail.com
+  
+    </h3>
+    <h4>
+      j026599l@student.staffs.acc.uk
+    </h4>
+  </div>
+  <script>
+   // element.classList.add("mystyle");
+  var ty= document.getElementById("out");
+  ty.style= "display : none";
+
+  
+   document.getElementById("reset").addEventListener("click", myFuncti);
+
+            function myFuncti() {
+              location.reload()
+            }
+
+
+  </script>
+
+<script>
+
+function myFunctionTest() {
+  var x = document.getElementById("source_currency_amount").value;
+  console.log(x)
+  x = parseInt(x)
+  if (x<1){
+    alert("Please Enter Valid Amount");
+    document.getElementById("source_currency_amount").value = 1;
+    
+  } else {
+    // console.log("okkkkkkkkkkkkkkkkk")
+  }
+}
+</script>
+
+    <script>
+            // document.getElementById("source_currency option").addEventListener("click", myFunctio);
+         
+      document.getElementById("excc").addEventListener("click", myFunctio);
+
+function myFunctio() {
+
+  
+
+  var tyy= document.getElementById("out");
+  tyy.style= "display : block";
+  const gmtDateTime = new Date().toUTCString();
+  document.getElementById("time").innerHTML = gmtDateTime;
+
+  const Source1 = document.getElementById("source_currency");
+  const Source =  Source1.options[Source1.selectedIndex].innerHTML;
+  const Source_amount = document.getElementById("source_currency_amount").value;
+
+  const destination1 = document.getElementById("destination_currency")
+  const destination =  destination1.options[destination1.selectedIndex].innerHTML;
+
+  const destination_amount = document.getElementById("destination_currency_amount").value;
+  const rate_per =  destination_amount / Source_amount 
+  document.getElementById("source-cur").innerHTML = Source;
+  document.getElementById("destination-cur").innerHTML = destination;
+  document.getElementById("destination-name").innerHTML = "1 " +  destination  +" = ";
+
+  document.getElementById("per-rate").innerHTML = rate_per + " " + Source;
+  document.getElementById("in-sor").innerHTML = Source_amount + " " +   Source + " = " +" ";
+  document.getElementById("final-con").innerHTML = destination_amount + "  " +  destination;
+
+  // alert(Source + " " + Source_amount + " " + destination  + " " + destination_amount + "today rate : " + rate_per)
+
+  // document.getElementByID("source-cur").style.display  = "none";
+  // alert(tokenAmount)
+  // chk(rate_per)
+
+}
+// function chk( ty ){
+//   document.getElementById("source-cur").innerHTML = ty;
+// }
+    </script>
+    
+	<script src="https://www.floatrates.com/scripts/converter.js"></script>
+
+    <!-- <script type="text/javascript">
+ 
+        (function() {
+    var js = document.createElement('script'); js.type = 'text/javascript'; js.async = true;
+    js.src = '//www.floatrates.com/scripts/converter.js';
+    var sjs = document.getElementsByTagName('script')[0]; sjs.parentNode.insertBefore(js, sjs);
+  })();
+    </script> -->
+
+
+	<script src="js/converter.js"></script>
+	<script src="js/nav_script.js"></script>
+</body>
+
+</html>
